@@ -25,7 +25,8 @@
           </ul>
         </li>
         <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-        {{-- <li class="dropdown">
+        @if(Auth::user()->role === 'super_admin')
+         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
@@ -60,7 +61,8 @@
             <li><a class="nav-link" href="components-table.html">Table</a></li>
             <li><a class="nav-link" href="components-user.html">User</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-wizard.html">Wizard</a></li>              </ul>
         </li>
-        <li class="dropdown">
+        @endif
+        {{-- <li class="dropdown">
           <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Forms</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>

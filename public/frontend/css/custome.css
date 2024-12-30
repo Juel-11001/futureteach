@@ -1,0 +1,312 @@
+
+/* General Styling */
+.page-section {
+    font-family: Arial, sans-serif;
+}
+
+.toggle-panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.toggle-buttons {
+    gap: 10px;
+}
+
+.toggle-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 25px;
+}
+
+.toggle-button.active {
+    background: #293a6c;
+    color: #fff;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #293a6b;
+    font-size: 18px;
+}
+
+.form-control {
+    padding-left: 35px;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+}
+
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    background: #0a3c72;
+    color: #fff;
+    border: none;
+}
+.btn:hover{
+    background-color: #293a6b;
+    transition: all 0.3s ease; 
+}
+
+.small-link {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Toggle Form Visibility */
+/* .toggle-form {
+    display: none;
+} */
+
+/* .toggle-form.active {
+    display: block;
+} */
+ /* Style for the checkbox */
+.form-check-input {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+/* Optional: Align label with the smaller checkbox */
+.form-check-label {
+    margin-left: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+/* Add shadow to the form container */
+.toggle-panel {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    border-radius: 12px; 
+    background-color: #ffffff; 
+    padding: 20px; 
+}
+
+/* Optional: Subtle shadow effect on hover */
+.toggle-panel:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease; 
+}
+/* Style for the checkbox and label alignment */
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.small-checkbox {
+    width: 16px; 
+    height: 16px; 
+    margin-right: 8px; 
+}
+.form-check-label {
+    font-size: 14px; 
+    margin: 0; 
+    color: #333; 
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+a.t-r {
+    font-size: 12px; 
+    color: #ff0000; 
+    text-decoration: none; 
+}
+
+a.t-r:hover {
+    text-decoration: underline;
+}
+
+/** forgot password */
+
+/* Global Styles */
+
+/* Container */
+.forgot-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+
+
+/* Forgot Password Card */
+.forgot-password-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Top Icon and Title */
+.icon-box {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #e6f4fc;
+    color: #0094ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.question-mark {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0094ff;
+}
+
+.title {
+    color: #ff0000;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    /* font-size: 14px;
+    color: #333;
+    margin-bottom: 20px; */
+    font-size: 16px;
+    font-weight: 400;
+    color: #5c5b5b;
+    line-height: 27px;
+}
+
+.brand {
+    text-transform: uppercase;
+    color: #0094ff;
+    font-weight: 700;
+    display: block;
+
+}
+
+/* Form */
+.forgot-password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    color: #0094ff;
+    font-size: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 10px 15px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #0094ff;
+}
+
+/* Square Button */
+.btn-square {
+    background-color: #0a3c72;;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.btn-square:hover {
+    background-color:#293a6b;
+}
+
+/* Go to Login Square Link */
+.square-link {
+    display: block;
+    margin-top: 15px;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    color: #293a6b;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.square-link:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: black;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .forgot-password-card {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    input {
+        font-size: 13px;
+    }
+
+    .btn-square {
+        font-size: 14px;
+    }
+
+    .square-link {
+        font-size: 13px;
+    }
+}
+
+/** reset password */
+
+.title-reset{
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: left;
+}

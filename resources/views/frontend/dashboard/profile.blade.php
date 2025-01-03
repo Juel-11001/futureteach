@@ -97,8 +97,8 @@
                     </div>
                     <div class="col-xl-3 col-sm-6 col-md-6">
                       <div class="wsus__dash_pro_img">
-                        <img src="{{Auth::user()->image ? asset(Auth::user()->image) : asset('frontend/images/ts-2.jpg')}}" alt="img" class="img-fluid w-100">
-                        <input type="file">
+                        <img src="{{Auth::user()->image ? asset(Auth::user()->image) : asset('uploads/no_image.jpg')}}" alt="img" class="img-fluid w-100">
+                        <input type="file" name="image">
                       </div>
                     </div>
                 </form>

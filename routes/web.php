@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,11 @@ Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
 /** user dashboard */
 Route::group(['middleware'=>['auth', 'verified','role:user'], 'prefix'=>'user', 'as'=>'user.' ], function(){
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+
+    /** user profile route */
+    Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/update/password', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

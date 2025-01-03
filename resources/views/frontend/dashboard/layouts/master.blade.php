@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="{{asset('frontend/dashboard/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/dashboard/css/responsive.css')}}">
   <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+  <!-- Toastr css -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -60,42 +62,51 @@
 
 
   <!--jquery library js-->
-  <script src="{{('frontend/dashboard/js/jquery-3.6.0.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/jquery-3.6.0.min.js')}}"></script>
   <!--bootstrap js-->
-  <script src="{{('frontend/dashboard/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/bootstrap.bundle.min.js')}}"></script>
   <!--font-awesome js-->
-  <script src="{{('frontend/dashboard/js/Font-Awesome.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/Font-Awesome.js')}}"></script>
   <!--select2 js-->
-  <script src="{{('frontend/dashboard/js/select2.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/select2.min.js')}}"></script>
   <!--slick slider js-->
-  <script src="{{('frontend/dashboard/js/slick.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/slick.min.js')}}"></script>
   <!--simplyCountdown js-->
-  <script src="{{('frontend/dashboard/js/simplyCountdown.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/simplyCountdown.js')}}"></script>
   <!--product zoomer js-->
-  <script src="{{('frontend/dashboard/js/jquery.exzoom.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/jquery.exzoom.js')}}"></script>
   <!--nice-number js-->
-  <script src="{{('frontend/dashboard/js/jquery.nice-number.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/jquery.nice-number.min.js')}}"></script>
   <!--counter js-->
-  <script src="{{('frontend/dashboard/js/jquery.waypoints.min.js')}}"></script>
-  <script src="{{('frontend/dashboard/js/jquery.countup.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/jquery.waypoints.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/jquery.countup.min.js')}}"></script>
   <!--add row js-->
-  <script src="{{('frontend/dashboard/js/add_row_custon.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/add_row_custon.js')}}"></script>
   <!--multiple-image-video js-->
-  <script src="{{('frontend/dashboard/js/multiple-image-video.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/multiple-image-video.js')}}"></script>
   <!--sticky sidebar js-->
-  <script src="{{('frontend/dashboard/js/sticky_sidebar.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/sticky_sidebar.js')}}"></script>
   <!--price ranger js-->
-  <script src="{{('frontend/dashboard/js/ranger_jquery-ui.min.js')}}"></script>
-  <script src="{{('frontend/dashboard/js/ranger_slider.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/ranger_jquery-ui.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/ranger_slider.js')}}"></script>
   <!--isotope js-->
-  <script src="{{('frontend/dashboard/js/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/isotope.pkgd.min.js')}}"></script>
   <!--venobox js-->
-  <script src="{{('frontend/dashboard/js/venobox.min.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/venobox.min.js')}}"></script>
   <!--classycountdown js-->
-  <script src="{{('frontend/dashboard/js/jquery.classycountdown.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/jquery.classycountdown.js')}}"></script>
 
   <!--main/custom js-->
-  <script src="{{('frontend/dashboard/js/main.js')}}"></script>
+  <script src="{{asset('frontend/dashboard/js/main.js')}}"></script>
+  <!-- Toastr css -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script>
+      @if ($errors->any())
+          @foreach ($errors->all() as $error)
+              toastr.error("{{$error}}")
+          @endforeach
+      @endif
+    </script>
 </body>
 
 </html>

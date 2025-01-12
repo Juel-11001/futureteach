@@ -319,9 +319,37 @@ input:focus {
   }
   @media (max-width: 768px) {
     .slider-image {
-      width: 100%; /* Adapts to the parent container's width */
-      height: auto; /* Maintains aspect ratio */
+      width: 100%;
+      height: auto; 
     }
   }
-  
-  
+
+  .card-body .table-responsive {
+    margin: 0;
+    padding: 0;
+    overflow-x: auto !important;
+}
+.table {
+    width: 100% !important;
+    table-layout: auto !important;
+    overflow-x: hidden !important;
+}
+
+.table th, .table td {
+    white-space: nowrap !important;
+    text-align: center !important;
+}
+@media (max-width: 576px) {
+    .table td .d-flex {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px; /* Add space between buttons */
+    }
+}
+@media (max-width: 776px) {
+    .table td .d-flex {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px; /* Add space between buttons */
+    }
+}
+
+

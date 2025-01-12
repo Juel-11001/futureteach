@@ -8,6 +8,7 @@
                         {{-- <div class="slider-progress"></div> --}}
                         @foreach ($sliders as $slider)   
                         <div class="single-slide align-center-left {{$loop->iteration % 2 == 0 ? 'animation-style-02' : 'animation-style-01'}}">
+                            <div class="slider-progress"></div>
                             <img src="{{ asset($slider->banner) }}" alt="{{ $slider->title }}"  class="slider-image">
                             <div class="slider-content">
                                 <h5>{{ $slider->type }}</h5>

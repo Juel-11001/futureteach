@@ -17,9 +17,11 @@ Route::group(['middleware'=>['auth', 'verified','role:user'], 'prefix'=>'user', 
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
     /** user profile route */
-    Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
-    Route::put('/profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
-    Route::post('/update/password', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
+    Route::controller(UserProfileController::class)->group(function(){
+        Route::get('/profile', 'index')->name('profile');
+        Route::put('/profile', 'updateProfile')->name('profile.update');
+        Route::post('/update/password', 'updatePassword')->name('profile.update.password');
+    });
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

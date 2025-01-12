@@ -70,9 +70,12 @@
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me" checked>
                       <label class="custom-control-label" for="remember-me">Remember Me</label>
                     </div>
+                    @if ($errors->has('remember'))
+                      <code>{{ $errors->first('remember') }}</code>
+                    @endif
                   </div>
 
                   <div class="form-group">

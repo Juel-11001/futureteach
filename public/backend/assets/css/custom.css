@@ -6,3 +6,11 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+.icon-align {
+    vertical-align: middle;
+    /* font-size: 1rem; */
+}
+.swal2-confirm:focus, .swal2-cancel:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }

@@ -310,3 +310,18 @@ input:focus {
     margin-bottom: 30px;
     text-align: left;
 }
+.slider-image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 466px;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    .slider-image {
+      width: 100%; /* Adapts to the parent container's width */
+      height: auto; /* Maintains aspect ratio */
+    }
+  }
+  
+  

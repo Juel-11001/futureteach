@@ -29,6 +29,18 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'remember' => ['accepted'],
+        ];
+    }
+      /**
+     * Get the custom messages for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'remember.accepted' => 'Please check the "Remember Me" box to proceed.',
         ];
     }
 

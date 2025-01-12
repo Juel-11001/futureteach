@@ -1,67 +1,43 @@
-<div class="slider-with-banner">
+<div class="slider-with-banner mt-3">
     <div class="container">
         <div class="row">
             <!-- Begin Slider Area -->
             <div class="col-lg-8 col-md-8">
                 <div class="slider-area pt-sm-30 pt-xs-30">
                     <div class="slider-active owl-carousel">
-                        <!-- Begin Single Slide Area -->
-                        <div class="single-slide align-center-left animation-style-01 bg-1">
-                            <div class="slider-progress"></div>
+                        {{-- <div class="slider-progress"></div> --}}
+                        @foreach ($sliders as $slider)   
+                        <div class="single-slide align-center-left {{$loop->iteration % 2 == 0 ? 'animation-style-02' : 'animation-style-01'}}">
+                            <img src="{{ asset($slider->banner) }}" alt="{{ $slider->title }}"  class="slider-image">
                             <div class="slider-content">
-                                <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                <h2>Chamcham Galaxy S9 | S9+</h2>
-                                <h3>Starting at <span>$1209.00</span></h3>
+                                <h5>{{ $slider->type }}</h5>
+                                <h2>{{ $slider->title }}</h2>
+                                <h3>Starting at <span>${{ $slider->starting_price }}</span></h3>
                                 <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                    <a class="links" href="{{ $slider->btn_url }}">Shop Now</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Slide Area End Here -->
-                        <!-- Begin Single Slide Area -->
-                        <div class="single-slide align-center-left animation-style-02 bg-2">
-                            <div class="slider-progress"></div>
-                            <div class="slider-content">
-                                <h5>Sale Offer <span>Black Friday</span> This Week</h5>
-                                <h2>Work Desk Surface Studio 2018</h2>
-                                <h3>Starting at <span>$824.00</span></h3>
-                                <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Slide Area End Here -->
-                        <!-- Begin Single Slide Area -->
-                        <div class="single-slide align-center-left animation-style-01 bg-3">
-                            <div class="slider-progress"></div>
-                            <div class="slider-content">
-                                <h5>Sale Offer <span>-10% Off</span> This Week</h5>
-                                <h2>Phantom 4 Pro+ Obsidian</h2>
-                                <h3>Starting at <span>$1849.00</span></h3>
-                                <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Slide Area End Here -->
+                        @endforeach
                     </div>
                 </div>
             </div>
             <!-- Slider Area End Here -->
-            <!-- Begin Li Banner Area -->
+
+            <!-- Begin Banner Area -->
             <div class="col-lg-4 col-md-4 text-center pt-sm-30 pt-xs-30">
                 <div class="li-banner">
                     <a href="#">
-                        <img src="images/banner/1_1.jpg" alt="">
+                        <img src="images/banner/1_1.jpg" alt="Banner 1">
                     </a>
                 </div>
                 <div class="li-banner mt-15 mt-md-30 mt-xs-25 mb-xs-5">
                     <a href="#">
-                        <img src="images/banner/1_2.jpg" alt="">
+                        <img src="images/banner/1_2.jpg" alt="Banner 2">
                     </a>
                 </div>
             </div>
-            <!-- Li Banner Area End Here -->
+            <!-- Banner Area End Here -->
         </div>
     </div>
 </div>

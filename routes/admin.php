@@ -3,6 +3,7 @@
 /** admin routes */
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
 use Illuminate\Support\Facades\Route;
@@ -19,3 +20,6 @@ Route::controller(ProfileController::class)->group(function(){
 /** slider routes */
 Route::put('/change-status', [SliderController::class, 'changeStatus'])->name('slider.change-status');
 Route::resource('slider', SliderController::class);
+
+/** categories route */
+Route::resource('/category', CategoryController::class);

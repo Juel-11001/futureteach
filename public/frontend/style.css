@@ -1743,7 +1743,8 @@ textarea:focus {
 .hb-menu nav > ul > li {
 		display: inline-block;
 		position: relative;
-		padding-right: 40px;
+		padding-right: 20px;
+		/* padding: 15px; */
 		transition: all 0.3s ease-in-out;
 }
 .hb-menu nav > ul > li > a {
@@ -1769,7 +1770,7 @@ textarea:focus {
 		color: #ffffff;
 }
 .hb-menu nav > ul > li > a::after {
-	content: "\f107";
+	/* content: "\f107"; */
 	position: absolute;
 	top: 8px;
 	right: 15px;

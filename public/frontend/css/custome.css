@@ -341,15 +341,209 @@ input:focus {
 }
 @media (max-width: 576px) {
     .table td .d-flex {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 10px; /* Add space between buttons */
+        flex-direction: column; 
+        gap: 10px; 
     }
 }
 @media (max-width: 776px) {
     .table td .d-flex {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 10px; /* Add space between buttons */
+        flex-direction: column; 
+        gap: 10px; 
     }
+}
+/** stop the arrow on nav bar Hide dropdown arrows when hovering over the category links */
+.hb-menu li:hover .hb-dropdown,
+.hb-menu li:hover .hb-sub-dropdown {
+    display: none !important;
+}
+
+/* Optionally, you can also hide the arrow before hover, if they exist in your HTML */
+.hb-menu li .hb-dropdown,
+.hb-menu li .hb-sub-dropdown {
+    display: none !important;
+}
+
+/* If the arrows are image or font-based, use the following to hide them on hover */
+.hb-menu li:hover > .dropdown-holder::after,
+.hb-menu li:hover > .megamenu-holder::after {
+    content: '' !important; 
 }
 
 
+/**  nav bar new design */
+/* Active state for the Home link */
+.custom-navbar .nav-link.active {
+    color: #ef4a23 !important; 
+    font-weight: bold;
+    /* border-bottom: 2px solid #ef4a23;  */
+    background-color: transparent; 
+  }
+.custom-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .custom-navbar .nav-link {
+    color: #222 !important;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Hover effects */
+ .nav-link:hover {
+    color: #ef4a23 !important;
+  }
+  
+  .custom-navbar .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 220px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Show dropdown menu on hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+  }
+  
+  .custom-navbar .dropdown-item {
+    font-size: 14px;
+    /* color: #081621; */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .custom-navbar .dropdown-item:hover {
+    background-color: #ef4a23;
+    color: #ffffff;
+  }
+  
+  .d_menu{
+    position: relative;
+    padding-right: 25px;
+  }
+  /* .d_menu::after {
+    content: '';
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border-top: 5px solid ;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid transparent #ef4a23;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    opacity: 0.4;
+  } */
+
+
+  /** child menu Main menu styles */
+.navbar-nav .d_menu {
+    position: relative;
+  }
+  
+  .navbar-nav .dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    list-style: none;
+    z-index: 999;
+    min-width: 200px;
+    border: 1px solid #ddd;
+  }
+  
+  .navbar-nav .d_menu:hover .dropdown-menu {
+    display: block; 
+  }
+  
+  /* Submenu item styles */
+  .navbar-nav .dropdown-menu .dropdown-item {
+    position: relative; 
+    padding: 8px 20px;
+    color: #081621;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  /* Arrow styles only for items with .has-arrow */
+  .navbar-nav .dropdown-item.has-arrow::after,
+  .navbar-nav .d_menu.has-arrow > a::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid  #ef4a23;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    opacity: 0.4;
+    
+  }
+  
+  /* Show child menu on hover */
+  .navbar-nav .dropdown-menu .dropdown-item.has-arrow:hover .child-menu {
+    display: block;
+  }
+  
+  /* Child menu styles */
+  .navbar-nav .dropdown-menu .child-menu {
+    display: none;
+    position: absolute;
+    top: 0; 
+    left: 100%; 
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    list-style: none;
+    z-index: 999;
+    min-width: 200px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style for child categories */
+  .navbar-nav .dropdown-menu .child-menu li a {
+    display: block;
+    padding: 8px 20px;
+    color: #081621;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  /* Hover effect for menu and child menu */
+  .navbar-nav .dropdown-item:hover,
+  .navbar-nav .child-menu li a:hover {
+    background-color: #ef4a23; 
+    color: #fff;
+  }
+  
+  /* Change arrow color on hover for items with children */
+  .navbar-nav .dropdown-item.has-arrow:hover::after,
+  .navbar-nav .d_menu.has-arrow:hover > a::after {
+    /* border-left-color: #fff; */
+  }
+  
+
+  /** nav bar menu for mobile */
+
+  
+  
+  

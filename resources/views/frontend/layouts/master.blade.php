@@ -84,6 +84,10 @@
         <script src="{{asset('frontend/js/vendor/popper.min.js')}}"></script>
         <!-- Bootstrap V4.1.3 Fremwork js -->
         <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script> --}}
+
         <!-- Ajax Mail js -->
         <script src="{{asset('frontend/js/ajax-mail.js')}}"></script>
         <!-- Meanmenu js -->

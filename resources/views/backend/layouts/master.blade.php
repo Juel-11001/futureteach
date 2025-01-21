@@ -68,11 +68,10 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
+        <!-- /END GA -->
     <!-- owl carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.default.min.css">
-
-    <!-- /END GA -->
 </head>
 
 <body>

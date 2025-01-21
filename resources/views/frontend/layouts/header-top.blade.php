@@ -2,16 +2,16 @@
     <div class="container">
         <div class="row">
             <!-- Begin Header Top Left Area -->
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-3 col-md-4 col-sm-4">
                 <div class="header-top-left">
-                    <ul class="phone-wrap">
+                    <ul class="phone-wrap ">
                         <li><span>Telephone Enquiry:</span><a href="#">(+123) 123 321 345</a></li>
                     </ul>
                 </div>
             </div>
             <!-- Header Top Left Area End Here -->
             <!-- Begin Header Top Right Area -->
-            <div class="col-lg-9 col-md-8">
+            {{-- <div class="col-lg-9 col-md-8 col-sm-8">
                 <div class="header-top-right">
                     <ul class="ht-menu">
                         <!-- Begin Setting Area -->
@@ -52,7 +52,7 @@
                         <!-- Language Area End Here -->
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             <!-- Header Top Right Area End Here -->
         </div>
     </div>

@@ -68,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category=Category::findOrFail($id);
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -76,7 +77,30 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all);
+        $request->validate([
+            'icon'=>'required|not_in:empty',
+            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+            'name'=>'required|max:200',
+            'status'=>'required',
+        ]);
+        $category=Category::findOrFail($id);
+        $imagePath=$category->image;
+
+        if($request->hasFile('image')){
+            if ($category->image) {
+                $this->deleteImage($category->image);
+            }
+            $imagePath = $this->uploadImageCategory($request, 'image', 'uploads/category' );
+        }
+        $category->name=$request->name;
+        $category->slug=Str::slug($request->name);
+        $category->icon=$request->icon;
+        $category->image=$imagePath;
+        $category->status=$request->status;
+        $category->save();
+        toastr('Category Update Successfully!', 'success');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -84,6 +108,20 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category=Category::findOrFail($id);
+        // dd($category);
+        if($category->image){
+            $this->deleteImage($category->image);
+        }
+        $category->delete();
+       return response(['status'=>'success', 'message'=>'Deleted Successfully!']);
+    }
+    /** Status */
+    public function changeStatus(Request $request){
+        $category=Category::findOrFail($request->id);
+        $category->status=$request->status == 'true' ? 1 : 0 ;
+        $category->save();
+
+        return response(['message'=>'Status has been Updated!', ]);
     }
 }

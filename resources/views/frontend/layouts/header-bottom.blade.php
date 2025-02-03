@@ -1,74 +1,124 @@
-<div class="">
-  <nav class="navbar navbar-expand-lg navbar-light custom-navbar ">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto wsus_menu_cat_item active">
-              <!-- Home -->
-              <li class="nav-item">
-                <a class="nav-link active" href="{{ route('frontend.home') }}">Home</a>
-              </li>
-      
-              <!-- Desktop -->
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="#" id="desktopDropdown">Desktop</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item">Gaming Desktop</li>
-                  <li class="dropdown-item has-arrow">
-                    Workstation
-                    <!-- Child category for Workstation -->
-                    <ul class="child-menu">
-                      <li><a href="#">CAD Workstation</a></li>
-                      <li><a href="#">3D Modeling Workstation</a></li>
-                      <li><a href="#">Editing Workstation</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-item">All-in-One</li>
-                </ul>
-              </li>
-      
-              <!-- Laptop -->
-              <li class="nav-item dropdown ">
-                <a class="nav-link" href="#" id="laptopDropdown">Laptop</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item">Gaming Laptop</li>
-                  <li class="dropdown-item has-arrow">
-                    Business Laptop
-                    <ul class="child-menu">
-                      <li><a href="#">Office Laptop</a></li>
-                      <li><a href="#">Student Laptop</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-item">Ultrabook</li>
-                </ul>
-              </li>
-      
-              <!-- Monitor -->
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="#" id="monitorDropdown">Monitor</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item has-arrow">
-                    MSI
-                    <ul class="child-menu">
-                      <li><a href="#">Curved Monitor</a></li>
-                      <li><a href="#">Gaming Monitor</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-item">Samsung</li>
-                  <li class="dropdown-item">LG</li>
-                </ul>
-              </li>
-      
-              <!-- Other items -->
-              <li class="nav-item"><a class="nav-link" href="#">UPS</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Phone</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Tablet</a></li>
-            </ul>
-          </div>
+<div class="header-bottom mb-0 header-sticky stick d-none d-lg-block d-xl-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Begin Header Bottom Menu Area -->
+                <div class="hb-menu">
+                    <nav>
+                        <ul>
+                            {{-- <li class="dropdown-holder"><a href="index.html">Home</a>
+                                <ul class="hb-dropdown">
+                                    <li><a href="index.html">Home One</a></li>
+                                    <li><a href="index-2.html">Home Two</a></li>
+                                    <li><a href="index-3.html">Home Three</a></li>
+                                    <li><a href="index-4.html">Home Four</a></li>
+                                </ul>
+                            </li>
+                            <li class="catmenu-dropdown megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
+                                <ul class="megamenu hb-megamenu">
+                                    <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
+                                        <ul>
+                                            <li><a href="shop-3-column.html">Shop 3 Column</a></li>
+                                            <li><a href="shop-4-column.html">Shop 4 Column</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                            <li><a href="shop-list.html">Shop List</a></li>
+                                            <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
+                                            <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="single-product-gallery-left.html">Single Product Style</a>
+                                        <ul>
+                                            <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
+                                            <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
+                                            <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
+                                            <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
+                                            <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
+                                            <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="single-product.html">Single Products</a>
+                                        <ul>
+                                            <li><a href="single-product.html">Single Product</a></li>
+                                            <li><a href="single-product-sale.html">Single Product Sale</a></li>
+                                            <li><a href="single-product-group.html">Single Product Group</a></li>
+                                            <li><a href="single-product-normal.html">Single Product Normal</a></li>
+                                            <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li> --}}
+                            @foreach ($categories as $mainCat)
+                                
+                            <li class="dropdown-holder"><a href="blog-left-sidebar.html">{{$mainCat->name}}</a>
+                                <ul class="hb-dropdown">
+                                    @foreach ($categories as $cat)
+                                        
+                                    <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">{{$cat->name}}</a>
+                                        <ul class="hb-dropdown hb-sub-dropdown">
+                                            @foreach ($categories as $category)
+                                                <li><a href="">{{$category->name}}</a></li>
+                                            @endforeach
+                                            {{-- <li><a href="blog-2-column.html">Blog 2 Column</a></li>
+                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
+                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
+                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li> --}}
+                                        </ul>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            @endforeach
+                            {{-- <li class="catmenu-dropdown megamenu-static-holder"><a href="index.html">Pages</a>
+                                <ul class="megamenu hb-megamenu">
+                                    <li><a href="blog-left-sidebar.html">Blog Layouts</a>
+                                        <ul>
+                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
+                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
+                                            <li class="active"><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
+                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
+                                            <li><a href="blog-list.html">Blog List</a></li>
+                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
+                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
+                                        <ul>
+                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
+                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
+                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
+                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
+                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="index.html">Other Pages</a>
+                                        <ul>
+                                            <li><a href="login-register.html">My Account</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="compare.html">Compare</a></li>
+                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="index.html">Other Pages 2</a>
+                                        <ul>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="about-us.html">About Us</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                            <li><a href="404.html">404 Error</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li> --}}
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
+                            <li><a href="shop-left-sidebar.html">Accessories</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Header Bottom Menu Area End Here -->
+            </div>
         </div>
-      </div>
     </div>
-  </nav>
 </div>
-

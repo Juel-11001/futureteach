@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\SubCategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Str;
@@ -24,7 +25,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories=Category::all();
+        $categories = Category::all();
         return view('backend.sub-category.create', compact('categories'));
     }
 
@@ -34,15 +35,15 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_id'=>'required',
-            'name'=>'required|max:100|unique:sub_categories,name',
-            'status'=>'required'
+            'category_id' => 'required',
+            'name' => 'required|max:100|unique:sub_categories,name',
+            'status' => 'required'
         ]);
-        $subCategory= new SubCategory();
-        $subCategory->category_id=$request->category_id;
-        $subCategory->name=$request->name;
-        $subCategory->slug=Str::slug($request->name);
-        $subCategory->status=$request->status;
+        $subCategory = new SubCategory();
+        $subCategory->category_id = $request->category_id;
+        $subCategory->name = $request->name;
+        $subCategory->slug = Str::slug($request->name);
+        $subCategory->status = $request->status;
         $subCategory->save();
         toastr('Sub-Category Create Successfully!', 'success');
         return redirect()->route('admin.sub-category.index');
@@ -61,8 +62,8 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $subCategory=SubCategory::findOrFail($id);
-        $categories=Category::all();
+        $subCategory = SubCategory::findOrFail($id);
+        $categories = Category::all();
         return view('backend.sub-category.edit', compact('subCategory', 'categories'));
     }
 
@@ -72,15 +73,15 @@ class SubCategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'category_id'=>'required',
-            'name'=>'required|max:100|unique:sub_categories,name,'.$id,
-            'status'=>'required'
+            'category_id' => 'required',
+            'name' => 'required|max:100|unique:sub_categories,name,' . $id,
+            'status' => 'required'
         ]);
-        $subCategory=SubCategory::findOrFail($id);
-        $subCategory->category_id=$request->category_id;
-        $subCategory->name=$request->name;
-        $subCategory->slug=Str::slug($request->name);
-        $subCategory->status=$request->status;
+        $subCategory = SubCategory::findOrFail($id);
+        $subCategory->category_id = $request->category_id;
+        $subCategory->name = $request->name;
+        $subCategory->slug = Str::slug($request->name);
+        $subCategory->status = $request->status;
         $subCategory->save();
         toastr('Sub-Category Update Successfully!', 'success');
         return redirect()->route('admin.sub-category.index');
@@ -91,17 +92,23 @@ class SubCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $subCategory=SubCategory::findOrFail($id);
+        $subCategory = SubCategory::findOrFail($id);
+        $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
+        if ($childCategory > 0) {
+            return response(['status' => 'error', 'message' => 'You can not delete this sub category because it has child category!']);
+        }
+
         $subCategory->delete();
-        return response(['status'=>'success', 'message'=>'Deleted Successfully!']);
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 
     public function changeStatus(Request $request)
     {
-        $subCategory=SubCategory::findOrFail($request->id);
-        $subCategory->status=$request->status == 'true' ? 1 : 0 ;
+        $subCategory = SubCategory::findOrFail($request->id);
+        $subCategory->status = $request->status == 'true' ? 1 : 0;
         $subCategory->save();
 
-        return response(['message'=>'Status has been Updated!', ]);
+        return response(['message' => 'Status has been Updated!',]);
     }
 }

@@ -24,13 +24,6 @@
              <div class="card-body">
               <form action="{{route('admin.sub-category.store')}}" method="post">
                   @csrf
-                  {{-- <div class="form-group">
-                      <label class="mr-2">Icon</label>
-                          <button class="btn btn-primary " data-selected-class="btn-danger"
-                          data-unselected-class="btn-info" role="iconpicker" name="icon"></button>
-
-                      <input type="text" class="form-control" name="icon" value="">
-                    </div> --}}
                     <div class="form-group">
                       <label for="inputState">Category</label>
                       <select id="inputState" class="form-control" name="category_id">

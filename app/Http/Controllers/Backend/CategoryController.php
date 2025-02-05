@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Traits\imageUploadTrait;
 use Illuminate\Http\Request;
 use Str;
@@ -110,11 +111,18 @@ class CategoryController extends Controller
     {
         $category=Category::findOrFail($id);
         // dd($category);
+        $subCategory=SubCategory::where('category_id', $category->id)->count();
+        if($subCategory > 0){
+            return response(['status'=>'error', 'message'=> 'You can not delete this category because it has sub category!']);
+        }
         if($category->image){
             $this->deleteImage($category->image);
         }
         $category->delete();
-       return response(['status'=>'success', 'message'=>'Deleted Successfully!']);
+
+        return response(['status'=>'success', 'Delete Successfully!']);
+        // $category->delete();
+    //    return response(['status'=>'success', 'message'=>'Deleted Successfully!']);
     }
     /** Status */
     public function changeStatus(Request $request){

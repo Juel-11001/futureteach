@@ -1,3 +1,14 @@
+@php
+    $categories= \App\Models\Category::where('status', 1)
+    ->with(['subCategories'=> function($query){
+        $query->where('status', 1)
+        ->with(['childCategories'=>function ($query) {
+            $query->where('status', 1);
+        }]);
+    }])
+    ->get();
+
+@endphp
 <div class="header-bottom mb-0 header-sticky stick d-none d-lg-block d-xl-block">
     <div class="container">
         <div class="row">
@@ -48,72 +59,26 @@
                                     </li>
                                 </ul>
                             </li> --}}
-                            @foreach ($categories as $mainCat)
+                            @foreach ($categories as $category)
                                 
-                            <li class="dropdown-holder"><a href="blog-left-sidebar.html">{{$mainCat->name}}</a>
+                            <li class="{{($category->subCategories->count() > 0) ? 'dropdown-holder' : ''}}"><a href="#">{{$category->name}}</a>
+                                @if ($category->subCategories->count() > 0)
+                                    
                                 <ul class="hb-dropdown">
-                                    @foreach ($categories as $cat)
+                                    @foreach ($category->subCategories as $sub_category)
                                         
-                                    <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">{{$cat->name}}</a>
-                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                            @foreach ($categories as $category)
-                                                <li><a href="">{{$category->name}}</a></li>
-                                            @endforeach
-                                            {{-- <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li> --}}
+                                    <li class=" {{count($sub_category->childCategories)>0 ? 'sub-dropdown-holder' : ''}}"><a href="blog-left-sidebar.html">{{$sub_category->name}}</a>
+                                        <ul class=" {{count($sub_category->childCategories)>0 ? 'hb-dropdown hb-sub-dropdown' : ''}}">
+                                            @foreach ($sub_category->childCategories as $childCategory)
+                                                <li><a href="">{{$childCategory->name}}</a></li>
+                                                @endforeach
                                         </ul>
                                     </li>
                                     @endforeach
                                 </ul>
+                                @endif
                             </li>
                             @endforeach
-                            {{-- <li class="catmenu-dropdown megamenu-static-holder"><a href="index.html">Pages</a>
-                                <ul class="megamenu hb-megamenu">
-                                    <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                        <ul>
-                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                            <li class="active"><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                            <li><a href="blog-list.html">Blog List</a></li>
-                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                        <ul>
-                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index.html">Other Pages</a>
-                                        <ul>
-                                            <li><a href="login-register.html">My Account</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="compare.html">Compare</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index.html">Other Pages 2</a>
-                                        <ul>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="faq.html">FAQ</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li> --}}
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
-                            <li><a href="shop-left-sidebar.html">Accessories</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('status', 1)->orderBy('serial', 'asc')->get();
-        $categories=Category::where('status',1)->get();
-        return view('frontend.home.index', compact('sliders','categories'));
+        // $categories=Category::where('status',1)->get();
+        return view('frontend.home.index', compact('sliders'));
     }
 }

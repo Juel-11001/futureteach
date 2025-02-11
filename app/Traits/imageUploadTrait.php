@@ -5,6 +5,7 @@ namespace App\Traits;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use File;
 
 trait imageUploadTrait
 {
@@ -72,6 +73,33 @@ trait imageUploadTrait
                 $imagepaths[] = $directory . '/' . $name_gen;
             }
             return $imagepaths;
+        }
+    }
+
+        /** handle single image file with no resize */
+        public function uploadImageNoResize(Request $request, $inputName, $path) {
+            if($request->hasFile($inputName)){
+                $image=$request->{$inputName};
+                $ext=$image->getClientOriginalExtension();
+                $imageName=uniqid().'.'.$ext;
+                $image->move(public_path($path),$imageName);
+                return $path.'/'.$imageName;
+            }
+        }
+        
+            /** handle single image update file with no resize  */
+    public function updateImageNoResize(Request $request, $inputName, $path, $oldPath=null) {
+        if($request->hasFile($inputName)){
+            if(File::exists(public_path($oldPath))){
+                File::delete(public_path($oldPath));
+            }
+            $image=$request->{$inputName};
+            $ext=$image->getClientOriginalExtension();
+            $imageName=uniqid().'.'.$ext;
+            $image->move(public_path($path),$imageName);
+            return $path.'/'.$imageName;
+
+
         }
     }
 }

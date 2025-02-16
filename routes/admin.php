@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildControllerCategory;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -40,3 +41,9 @@ Route::resource('/child-category', ChildControllerCategory::class);
 /* Brand routes */
 Route::put('brand/change-status', [BrandController::class, 'changeStatus'])->name('brand.change-status');
 Route::resource('/brand', BrandController::class);
+
+/** product routes */
+Route::put('products/change-status', [ProductController::class, 'changeStatus'])->name('products.change-status');
+Route::get('products/get-sub-categories', [ProductController::class, 'getSubCategories'])->name('product.get-sub-categories');
+Route::get('products/get-child-categories', [ProductController::class, 'getChildCategories'])->name('product.get-child-categories');
+Route::resource('/products', ProductController::class);

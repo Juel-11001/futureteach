@@ -25,10 +25,11 @@
             
           </ul>
         </li>
-        <li class="dropdown {{setActive(['admin.brand.*'])}}">
+        <li class="dropdown {{setActive(['admin.brand.*', 'admin.products.*'])}}">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-list"> </i><span>Manage Website</span></a>
           <ul class="dropdown-menu">
             <li class="{{setActive(['admin.brand.*'])}}"><a class="nav-link" href="{{route('admin.brand.index')}}">Brand</a></li>
+            <li class="{{setActive(['admin.products.*'])}}"><a class="nav-link" href="{{route('admin.products.index')}}">Products</a></li>
             
           </ul>
         </li>

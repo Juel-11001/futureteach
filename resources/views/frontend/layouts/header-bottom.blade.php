@@ -1,5 +1,6 @@
 @php
     $categories= \App\Models\Category::where('status', 1)
+    ->whereIn('name', ['Desktop','IC', 'Speaker', 'Accessories'])
     ->with(['subCategories'=> function($query){
         $query->where('status', 1)
         ->with(['childCategories'=>function ($query) {

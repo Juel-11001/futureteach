@@ -22,7 +22,7 @@
                     </div>
                   </div>
                    <div class="card-body">
-                    <div class="table-responsive-sm">
+                    <div class="table-responsive-sm-md">
                       {{ $dataTable->table() }}
                   </div>
                   </div>

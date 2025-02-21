@@ -23,17 +23,20 @@ class ProductDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn= "<a href='".route('admin.products.edit', $query->id)."'class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn= "<a href='".route('admin.products.destroy', $query->id)."'class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash'></i></i></a>";
+                $editBtn= "<a href='".route('admin.products.edit', $query->id)."'class='btn btn-primary mr-sm-2 mb-2 mb-sm-0'><i class='far fa-edit'></i></a>";
+                $deleteBtn= "<a href='".route('admin.products.destroy', $query->id)."'class='btn btn-danger delete-item'><i class='fas fa-trash'></i></i></a>";
+
                 $moreBtn='<div class="dropdown d-inline dropleft ml-1">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-cog"></i>
                 </button>
                 <div class="dropdown-menu">
-                
+                    <a class="dropdown-item has-icon" href="'.route('admin.products-image-gallery.index', ['product'=>$query->id]). '"><i class="far fa-images"></i>Image Gallery</a>
+                    <a class="dropdown-item has-icon" href="'.route('admin.product-variant.index', ['product'=>$query->id]).'"><i class="far fa-file"></i> Variants</a>
                 </div>
             </div>';
-                return $editBtn.$deleteBtn.$moreBtn;
+                // return $editBtn.$deleteBtn.$moreBtn;
+                return "<div class='d-flex flex-column flex-sm-row'>" . $editBtn . $deleteBtn . $moreBtn . "</div>";
             })
             ->addColumn('image', function($query){
                 return $img="<img width='65px' src='".asset($query->thumb_image)."'></img>";

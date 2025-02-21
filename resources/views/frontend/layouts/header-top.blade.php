@@ -2,10 +2,17 @@
     <div class="container">
         <div class="row">
             <!-- Begin Header Top Left Area -->
-            <div class="col-lg-3 col-md-4 col-sm-4">
+            {{-- <div class="col-lg-3 col-md-4 col-sm-4 col-12 d-flex justify-content-center align-items-center text-center">
                 <div class="header-top-left">
                     <ul class="phone-wrap ">
                         <li><span>Telephone Enquiry:</span><a href="#">(+123) 123 321 345</a></li>
+                    </ul>
+                </div>
+            </div> --}}
+            <div class="col-12 d-flex justify-content-center align-items-center text-center">
+                <div class="header-top-left">
+                    <ul class="phone-wrap ">
+                        <li><span><b>Telephone : </b></span><a href="#">(+123) 123 321 345</a></li>
                     </ul>
                 </div>
             </div>

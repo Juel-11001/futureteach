@@ -82,7 +82,7 @@ class CategoryController extends Controller
         $request->validate([
             'icon'=>'required|not_in:empty',
             'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
-            'name'=>'required|max:200',
+            'name'=>'unique:categories,name,'.$id,
             'status'=>'required',
         ]);
         $category=Category::findOrFail($id);

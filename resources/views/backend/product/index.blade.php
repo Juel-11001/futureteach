@@ -15,7 +15,7 @@
         <div class="section-body">
 
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-md-12 col-lg-12">
               <div class="card">
                 <div class="card-header">
                   <h4>All Products</h4>
@@ -24,7 +24,9 @@
                   </div>
                 </div>
                  <div class="card-body">
-                  {{ $dataTable->table() }}
+                  <div class="table-responsive-sm">
+                    {{ $dataTable->table() }}
+                </div>
                 </div>
               </div>
             </div>
@@ -36,6 +38,8 @@
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 <script>
     $(document).ready(function(){
+      
+        
         $('body').on('click', '.change-status', function(){
             let isChecked=$(this).is(':checked');
             let id = $(this).data('id');

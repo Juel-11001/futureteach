@@ -36,7 +36,7 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
-            'name' => 'required|max:100|unique:sub_categories,name',
+            'name'=>'required|max:100|unique:sub_categories,name',
             'status' => 'required'
         ]);
         $subCategory = new SubCategory();
@@ -74,7 +74,7 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
-            'name' => 'required|max:100|unique:sub_categories,name,' . $id,
+            'name' => ['required', 'max:100', 'unique:sub_categories,name,' . $id],
             'status' => 'required'
         ]);
         $subCategory = SubCategory::findOrFail($id);

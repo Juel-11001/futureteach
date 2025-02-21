@@ -34,10 +34,12 @@ class ChildControllerCategory extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $validated=$request->validate([
             'category_id'=>'required',
             'sub_category_id'=>'required',
-            'name'=>'required|max:200|unique:child_categories,name',
+            // 'name'=>'required|max:200|unique:child_categories,name',
+            'name' => 'required|max:200|unique:child_categories,name,NULL,id,category_id,' . $request->category_id . ',sub_category_id,' . $request->sub_category_id,
             'status'=>'required',
             ]);
             $childCategory= new ChildCategory();
@@ -75,10 +77,13 @@ class ChildControllerCategory extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request->all());
         $validated=$request->validate([
             'category_id'=>'required',
             'sub_category_id'=>'required',
-            'name'=>'required|max:200|unique:child_categories,name,' .$id,
+            // 'name'=>'required|max:200|unique:child_categories,name,' .$id,
+            'name' => 'required|max:200|unique:child_categories,name,' . $id . ',id,category_id,' . $request->category_id . ',sub_category_id,' . $request->sub_category_id,
+
             'status'=>'required',
             ]);
             $childCategory= ChildCategory::findOrFail($id);

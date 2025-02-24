@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+// use App\DataTables\AllAdminProductsListDataTable;
 use App\DataTables\ProductDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use App\Models\SubCategory;
 use App\Traits\imageUploadTrait;
 use Illuminate\Http\Request;
@@ -162,7 +165,30 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product=Product::findOrFail($id);
+        // if(OrderProduct::where('product_id', $product->id)->count()>0){
+        //     return response(['status'=>'error', 'message'=>'Product have orders! Can not be deleted']);
+        // }
+        /**Delete main product image */
+        $this->deleteImage($product->thumb_image);
+
+        /** delete product gallery images */
+        $galleryImages=ProductImageGallery::where('product_id', $product->id)->get();
+        foreach ($galleryImages as $image){
+            $this->deleteImage($image->image);
+            $image->delete();
+        }
+        /** delete variant and variant item also together */
+        $variants=ProductVariant::where('product_id', $product->id)->get();
+        foreach ($variants as $variant){
+            // dd($variant->productVariantItems);
+            $variant->productVariantItems()->delete();
+            $variant->delete();
+        }
+        $product->delete();
+        // toastr('Deleted Successfully!','success');
+        // return redirect()->route('admin.products.index');
+        return response(['status'=>'success', 'message'=>'Deleted Successfully!']);
     }
 
         /**

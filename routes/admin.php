@@ -3,6 +3,7 @@
 /** admin routes */
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AllAdminProductController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildControllerCategory;
@@ -50,6 +51,11 @@ Route::put('products/change-status', [ProductController::class, 'changeStatus'])
 Route::get('products/get-sub-categories', [ProductController::class, 'getSubCategories'])->name('product.get-sub-categories');
 Route::get('products/get-child-categories', [ProductController::class, 'getChildCategories'])->name('product.get-child-categories');
 Route::resource('/products', ProductController::class);
+
+/** all product list routes */
+Route::get('all-admin-products-list', [AllAdminProductController::class, 'index'])->name('all-admin-products-list.index');
+Route::get('all-admin-product-pending-list', [AllAdminProductController::class, 'productPending'])->name('all-admin-product-pending-list');
+Route::put('change-approve-status',  [AllAdminProductController::class,'changeApproveStatus'])->name('change-approve-status');
 
 /* Product Image Gallery routes */
 Route::resource('products-image-gallery', ProductImageGalleryController::class);

@@ -25,14 +25,19 @@
             
           </ul>
         </li>
-        <li class="dropdown {{setActive(['admin.brand.*', 'admin.products.*'])}}">
+        <li class="dropdown {{setActive(['admin.brand.*', 'admin.products.*', 'admin.all-admin-products-list.*', 'admin.all-admin-product-pending-list'])}}">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-list"> </i><span>Manage Website</span></a>
           <ul class="dropdown-menu">
             <li class="{{setActive(['admin.brand.*'])}}"><a class="nav-link" href="{{route('admin.brand.index')}}">Brand</a></li>
             <li class="{{setActive(['admin.products.*'])}}"><a class="nav-link" href="{{route('admin.products.index')}}">Products</a></li>
-            
+            <li class="{{setActive(['admin.all-admin-products-list.index'])}}"><a class="nav-link" href="{{route('admin.all-admin-products-list.index')}}">All Admin Products</a></li>
+
+            <li class="{{setActive(['admin.all-admin-product-pending-list'])}}"><a class="nav-link mt-3" href="{{route('admin.all-admin-product-pending-list')}}">All Admin Pending Products </a></li>
           </ul>
         </li>
-        <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>       
+       
+        <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>   
+        {{-- <li><a class="nav-link" href="{{route('admin.product.all.admin.product.list')}}">All Admin Products</a></li>     --}}
+       
     </aside>
   </div>
